@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cart</title>
+    <title>Shop</title>
     <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/libs/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="/assets/app.css" rel="stylesheet">
@@ -37,10 +37,10 @@
                 </ul>
                 <ul class="navbar-nav mb-2 mb-md-0">
                     <li class="nav-item">
-                        <span class="nav-link">
+                        <a class="nav-link" href="cart.html">
                             <i class="fa-solid fa-cart-shopping"></i>
                             Cart (0)
-                        </span>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.html">Login</a>
@@ -68,59 +68,75 @@
     </nav>
     <main class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
+            <div class="col-9">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>Alamat Pengiriman</h5>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" aria-describedby="name">
+                                        <div id="name" class="form-text">We'll never share your email with anyone
+                                            else.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input type="text" class="form-control" id="phone" aria-describedby="phone">
+                                        <div id="phone" class="form-text">We'll never share your email with anyone
+                                            else.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <textarea name="address" id="address" class="form-control" rows="10"
+                                            cols="5"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-3">
+                <div class="card mb-3">
                     <div class="card-header">
                         <h6>Cart</h6>
                     </div>
                     <div class="card-body">
-                        <table class="table table-borderless  text-center align-middle">
+                        <table class="table table-borderless">
                             <thead>
                                 <tr>
-                                    <th>Produk</th>
-                                    <th>Harga</th>
-                                    <th>Jumlah</th>
-                                    <th>Subtotal</th>
-                                    <th></th>
+                                    <th>Product</th>
+                                    <th class="text-center">Qty</th>
+                                    <th class="text-center">Price</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>
-                                        <img src="https://placehold.co/50x50" alt="product" class="rounded">
-                                        Product Title
-                                    </td>
-                                    <td>Rp. 100.000,-</td>
-                                    <td>
-                                        <div class="input-group">
-                                            <input type="number" class="form-control text-center">
-                                            <button class="btn btn-primary"><i class="fa-solid fa-check"></i></button>
-                                        </div>
-                                    </td>
-                                    <td>Rp. 100.000,-</td>
-                                    <td>
-                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                    </td>
+                                    <td>Product title</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">Rp. 100.000,-</td>
                                 </tr>
                             </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Subtotal</td>
+                                    <td>Rp. 100.000,-</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">Total</th>
+                                    <th>Rp. 100.000,-</th>
+                                </tr>
+                            </tfoot>
                         </table>
-                        <div class="d-flex justify-content-end">
-                            <h6><strong>Total: Rp. 100.000,-</strong></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between">
-                        <button class="btn btn-warning">
-                            <i class="fa-solid fa-circle-left"></i>
-                            Kembali Belanja
-                        </button>
-                        <a href="checkout.html" class="btn btn-success">
-                            Pembayaran
-                            <i class="fa-solid fa-circle-right"></i>
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
     <script src=" /libs/bootstrap/js/bootstrap.bundle.min.js">
