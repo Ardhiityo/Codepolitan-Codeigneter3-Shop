@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Orders</title>
+    <title>Orders Detail</title>
     <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/libs/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="/assets/app.css" rel="stylesheet">
@@ -85,28 +85,45 @@
             </div>
             <div class="col-9">
                 <div class="card">
-                    <div class="card-header">
-                        <h6>Order List</h6>
+                    <div class="card-header d-flex justify-content-between">
+                        <h6>Detail Order #123</h6>
+                        <h6 class="badge text-bg-warning">Menunggu Pembayaran</h6>
                     </div>
                     <div class="card-body">
-                        <table class="table text-center table-borderless">
+                        <p>Nama : Nama Penerima</p>
+                        <p>Telepon: 01234</p>
+                        <p>Alamat: Jl. Sesama, No 123</p>
+                        <table class="table table-borderless  text-center align-middle">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Total</th>
-                                    <th>Status</th>
+                                    <th>Produk</th>
+                                    <th>Harga</th>
+                                    <th>Jumlah</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="text-primary">#123</td>
-                                    <td>12-12-2021</td>
+                                    <td>
+                                        <img src="https://placehold.co/50x50" alt="product" class="rounded">
+                                        Product Title
+                                    </td>
                                     <td>Rp. 100.000,-</td>
-                                    <td><span class=" badge text-bg-warning">Menunggu Pembayaran</span></td>
+                                    <td>3</td>
+                                    <td>Rp. 100.000,-</td>
+                                    <td>
+                                        <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-end">
+                            <h6><strong>Total: Rp. 100.000,-</strong></h6>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-success">Konfirmasi Pembayaran</button>
                     </div>
                 </div>
             </div>
