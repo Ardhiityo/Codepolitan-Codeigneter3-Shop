@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profile</title>
+    <title>Update Profile</title>
     <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/libs/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="/assets/app.css" rel="stylesheet">
@@ -83,21 +83,44 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <img src="https://placehold.co/150x200" alt="avatar">
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-body">
-                        <p>Nama : Hakim</p>
-                        <p>Email: hakimsembiring@gmail.com</p>
-                        <button class="btn btn-primary">Edit</button>
-                    </div>
-                </div>
+            <div class="col-9">
+                <form action="">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0">Formulir Profil</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="name" aria-describedby="name">
+                                <div id="email" class="form-text">
+                                    We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email">
+                                <div id="email" class="form-text">
+                                    We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password">
+                                <div id="password" class="form-text">
+                                    We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="avatar" class="form-label">Foto</label>
+                                <input type="file" name="avatar" id="avatar" class="form-control">
+                                <div id="notes" class="form-text">
+                                    We'll never share your email with anyone else.
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Simpan</button>
+                        </div>
+                </form>
             </div>
         </div>
     </main>
