@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop</title>
+    <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/libs/font-awesome/css/all.min.css" rel="stylesheet">
+    <link href="/assets/app.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <div class="container"> <a class="navbar-brand" href="#">Shop</a> <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Manage
+                        </button>
+                        <div class="dropdown">
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Kategori</a></li>
+                                <li><a class="dropdown-item" href="#">Produk</a></li>
+                                <li><a class="dropdown-item" href="#">Order</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Cart (0)
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Admin
+                        </button>
+                        <div class="dropdown">
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        <div class="row">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h6>Berhasil</h6>
+                    </div>
+                    <div class="card-body">
+                        <h5>Nomor Order: 12345</h5>
+                        <p>Terimakasih sudah berbelanja.</p>
+                        <p>Silahkan lakukan pembayaran untuk bisa kami proses selanjutnya, dengan cara:</p>
+                        <ol>
+                            <li>
+                                Lakukan pembayaran pada rekening <strong>BCA 12345</strong> a/n <strong>PT.Shop</strong>
+                            </li>
+                            <li>Sertakan keterangan dengan nomor order: <strong>12345</strong></li>
+                            <li>Total pembayaran <strong>Rp. 100.000,-</strong></li>
+                        </ol>
+                        <p>
+                            Jika sudah, silahkan kirimkan bukti transfer di halaman konfirmasi atau bisa
+                            <a href="#">klik disini</a>
+                        </p>
+                        <button class="btn btn-primary">
+                            <i class="fa-solid fa-circle-left"></i>
+                            Kembali
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+    </main>
+    <script src=" /libs/bootstrap/js/bootstrap.bundle.min.js">
+    </script>
+</body>
+
+</html>
