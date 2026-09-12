@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin Users Form</title>
+    <title>Admin Product Form</title>
     <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/libs/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="/assets/app.css" rel="stylesheet">
@@ -72,50 +72,52 @@
             <div class="col-9 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        <h6>Tambah User</h6>
+                        <h6>Tambah Produk</h6>
                     </div>
                     <div class="card-body">
                         <form>
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="name">
-                                <div id="name" class="form-text">We'll never share your email with anyone else.
+                                <label for="title" class="form-label">Produk</label>
+                                <input type="text" class="form-control" id="title" onkeyup="createSlug()"
+                                    aria-describedby="product">
+                                <div id="product" class="form-text">We'll never share your email with anyone else.
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="email">
-                                <div id="email" class="form-text">We'll never share your email with anyone else.
+                                <label for="slug" class="form-label">Slug</label>
+                                <input type="text" class="form-control" id="slug" aria-describedby="slug">
+                                <div id="slug" class="form-text">We'll never share your email with anyone else.
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password">
-                                <div id="password" class="form-text">We'll never share your email with anyone else.
+                                <label for="harga" class="form-label">Harga</label>
+                                <input type="number" class="form-control" id="harga" aria-describedby="harga">
+                                <div id="harga" class="form-text">We'll never share your harga with anyone else.
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="role" class="form-label">Role</label>
+                                <label for="category" class="form-label">Kategori</label>
                                 <select class="form-select">
-                                    <option selected value="">Select Role</option>
-                                    <option value="adin">Admin</option>
-                                    <option value="member">Member</option>
+                                    <option selected value="">Pilih Kategori</option>
+                                    <option value="smartphones">Smartphone</option>
+                                    <option value="laptops">Laptop</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="status" class="form-label">Status</label>
+                                <label for="availability" class="form-label">Ada Stok?</label>
                                 <br>
                                 <div class="d-flex gap-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="status" id="active">
-                                        <label class="form-check-label" for="active">
-                                            Aktif
+                                        <input class="form-check-input" type="radio" name="availability" id="available>
+                                        <label class=" form-check-label" for="available">
+                                        Ada
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="status" id="deactive">
-                                        <label class="form-check-label" for="deactive">
-                                            Non-Aktif
+                                        <input class="form-check-input" type="radio" name="availability"
+                                            id="unavailable">
+                                        <label class="form-check-label" for="unavailable">
+                                            Kosong
                                         </label>
                                     </div>
                                 </div>
@@ -131,8 +133,9 @@
             </div>
         </div>
     </main>
-    <script src=" /libs/bootstrap/js/bootstrap.bundle.min.js">
-    </script>
+    <script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/jquery/jquery-4.0.0.min.js"></script>
+    <script src="/assets/app.js"></script>
 </body>
 
 </html>
