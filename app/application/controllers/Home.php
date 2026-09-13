@@ -7,7 +7,7 @@ class Home extends MY_Controller
 	{
 		$data['title'] = 'Home';
 		$data['pages'] = 'pages/home/index';
-
+		
 		return $this->view($data);
 	}
 }
