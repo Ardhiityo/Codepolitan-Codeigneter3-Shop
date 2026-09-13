@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Model extends CI_Model
 {
     protected $table = '';
+    protected $per_page = 5;
 
     public function __construct()
     {
@@ -99,5 +100,54 @@ class MY_Model extends CI_Model
     {
         $this->db->delete($this->table);
         return $this->db->affected_rows();
+    }
+
+    public function paginate($page)
+    {
+        $this->db->limit(
+            $this->per_page,
+            ($page * $this->per_page) - $this->per_page
+        );
+    }
+
+    public function makePagination($base_url, $total_rows, $uri_segment)
+    {
+        $this->load->library('pagination');
+
+        $config['base_url'] = $base_url;
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->per_page;
+        $config['uri_segment'] = $uri_segment;
+        $config['use_page_numbers'] = true;
+
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+
+        $config['first_tag_open'] = '<li class="page-item">';
+        $config['first_tag_close'] = '</li>';
+
+        $config['last_tag_open'] = '<li class="page-item">';
+        $config['last_tag_close'] = '</li>';
+
+        $config['next_link'] = '<a class="page-link" href="#">Next</a>';
+        $config['next_tag_open'] = '<li class="page-item">';
+        $config['next_tag_close'] = '</li>';
+
+        $config['prev_link'] = '<a class="page-link" href="#">Previous</a>';
+        $config['prev_tag_open'] = '<li class="page-item>';
+        $config['prev_tag_close'] = '</li>';
+
+        $config['cur_tag_open'] = '<li class="page-item active">';
+        $config['cur_tag_close'] = '</li>';
+
+        $config['num_tag_open'] = '<a class="page-link" href="#" aria-current="page">';
+        $config['num_tag_close'] = '</a>';
+
+        $this->pagination->initialize($config);
+
+        return $this->pagination->create_links();
     }
 }
