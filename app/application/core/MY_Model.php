@@ -111,43 +111,42 @@ abstract class MY_Model extends CI_Model
             $this->per_page,
             ($page * $this->per_page) - $this->per_page
         );
+        return $this;
     }
 
     public function makePagination($base_url, $total_rows, $uri_segment)
     {
         $this->load->library('pagination');
 
-        $config['base_url'] = $base_url;
-        $config['total_rows'] = $total_rows;
-        $config['per_page'] = $this->per_page;
-        $config['uri_segment'] = $uri_segment;
-        $config['use_page_numbers'] = true;
+        $config = [
+            'base_url' => $base_url,
+            'total_rows' => $total_rows,
+            'per_page' => $this->per_page,
+            'uri_segment' => $uri_segment,
+            'use_page_numbers' => true,
+            
+            'first_link' => false,
+            'last_link' => false,
+            
+            'full_tag_open' => '<ul class="pagination">',
+            'full_tag_close' => '</ul>',
 
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
+            'attributes' => ['class' => 'page-link'],
+            
+            'prev_link' => 'Previous',
+            'prev_tag_open' => '<li class="page-item">',
+            'prev_tag_close' => '</li>',
 
-        $config['first_link'] = false;
-        $config['last_link'] = false;
+            'next_link' => 'Next',
+            'next_tag_open' => '<li class="page-item">',
+            'next_tag_close' => '</li>',
 
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
+            'cur_tag_open' => '<li class="page-item active"> <span class="page-link" aria-current="page">',
+            'cur_tag_close' => '</span></li>',
 
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-
-        $config['next_link'] = '<a class="page-link" href="#">Next</a>';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-
-        $config['prev_link'] = '<a class="page-link" href="#">Previous</a>';
-        $config['prev_tag_open'] = '<li class="page-item>';
-        $config['prev_tag_close'] = '</li>';
-
-        $config['cur_tag_open'] = '<li class="page-item active">';
-        $config['cur_tag_close'] = '</li>';
-
-        $config['num_tag_open'] = '<a class="page-link" href="#" aria-current="page">';
-        $config['num_tag_close'] = '</a>';
+            'num_tag_open' => '<li class="page-item">',
+            'num_tag_close' => '</li>',
+        ];
 
         $this->pagination->initialize($config);
 

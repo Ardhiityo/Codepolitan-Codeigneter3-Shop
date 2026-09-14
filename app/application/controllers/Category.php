@@ -12,12 +12,12 @@ class Category extends MY_Controller
     {
         $data['title'] = 'Category';
         $data['page'] = 'pages/category/index';
-        $data['content'] = $this->category->paginate($page);
+        $data['content'] = $this->category->paginate($page)->get();
         $data['total_rows'] = $this->category->count();
         $data['pagination'] = $this->category->makePagination(
             base_url('category'),
             $data['total_rows'],
-            $page
+            2
         );
 
         $this->view($data);
