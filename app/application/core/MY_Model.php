@@ -21,7 +21,6 @@ abstract class MY_Model extends CI_Model
 
     abstract public function getDefaultValues();
     abstract public function getValidationRules();
-    abstract public function run($input);
 
     public function validate()
     {
