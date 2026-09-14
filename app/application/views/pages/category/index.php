@@ -35,7 +35,7 @@
                     <tbody>
                         <?php foreach ($content as $index => $row) : ?>
                             <tr>
-                                <td><?= $index + 1 ?></td>
+                                <td><?= (($per_page * $current_page) - $per_page) + $index + 1 ?></td>
                                 <td><?= $row->title ?></td>
                                 <td><?= $row->slug ?></td>
                                 <td class="d-flex gap-3">

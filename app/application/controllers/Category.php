@@ -13,6 +13,8 @@ class Category extends MY_Controller
         $data['title'] = 'Category';
         $data['page'] = 'pages/category/index';
         $data['content'] = $this->category->paginate($page)->get();
+        $data['per_page'] = $this->category->per_page;
+        $data['current_page'] = $page;
         $data['total_rows'] = $this->category->count();
         $data['pagination'] = $this->category->makePagination(
             base_url('category'),
@@ -31,7 +33,7 @@ class Category extends MY_Controller
 
         if (! $this->category->validate()) {
             $data['title'] = 'Create Category';
-            $data['page'] = 'pages/category/create';
+            $data['page'] = 'pages/category/form';
 
             $this->view($data);
             return;
@@ -48,13 +50,24 @@ class Category extends MY_Controller
         }
     }
 
-    public function unique_slug($str)
+    public function unique_slug($slug)
     {
-        if ($this->category->where('slug', $str)->first()) {
-            $this->form_validation->set_message('unique_slug', 'The {field} already exists');
-            return FALSE;
-        } else {
-            return TRUE;
+        $query = $this->category->where('slug', $slug);
+        $path = $this->uri->segment(2);
+        $id = $this->uri->segment(3);
+
+        if ($id && $path === '/edit') {
+            if ($this->category->where('id !=', $id)->first()) {
+                $this->form_validation->set_message('unique_slug', 'The {field} already exists');
+                return false;
+            }
+            return true;
         }
+
+        if ($query->where('slug', $slug)->first()) {
+            $this->form_validation->set_message('unique_slug', 'The {field} already exists');
+            return false;
+        }
+        return true;
     }
 }
