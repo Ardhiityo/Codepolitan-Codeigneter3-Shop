@@ -16,10 +16,14 @@
     <!-- Navbar -->
 
     <!-- Content -->
-    <?php $this->load->view($page) ?>
+    <div class="container">
+        <?php $this->load->view('layouts/_alert') ?>
+        <?php $this->load->view($page) ?>
+    </div>
     <!-- Content -->
 
     <script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/libs/jquery/jquery-4.0.0.min.js"></script>
     <script src="/assets/app.js"></script>
 </body>
 
