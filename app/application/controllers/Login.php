@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Register extends MY_Controller
+class Login extends MY_Controller
 {
     public function __construct()
     {
@@ -20,23 +20,24 @@ class Register extends MY_Controller
         if ($_POST) {
             $input = (object) $this->input->post(null, true);
         } else {
-            $input = (object) $this->register->getDefaultValues();
+            $input = (object) $this->login->getDefaultValues();
         }
 
-        if (! $this->register->validate()) {
-            $data['title'] = 'Register';
-            $data['page'] = 'pages/auth/register';
+        if (! $this->login->validate()) {
+            $data['title'] = 'Login';
+            $data['page'] = 'pages/auth/login';
 
             $this->view($data);
             return;
         }
-
-        if ($this->register->run($input)) {
+        
+        if ($this->login->run($input)) {
+            $this->session->set_flashdata('success', 'Login successfully');
             redirect(base_url());
             return;
         } else {
-            $this->session->set_flashdata('error', 'Ups, something went wrong');
-            redirect(base_url('register'));
+            $this->session->set_flashdata('error', 'Email or Password is not valid');
+            redirect(base_url('login'));
             return;
         }
     }

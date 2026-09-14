@@ -5,6 +5,16 @@ class Register_model extends MY_Model
 {
     protected $table = 'users';
 
+    public function getDefaultValues()
+    {
+        return [
+            'name' => '',
+            'email' => '',
+            'password' => '',
+            'password_confirmation' => ''
+        ];
+    }
+
     public function getValidationRules()
     {
         return [
@@ -49,14 +59,13 @@ class Register_model extends MY_Model
             'id' => $id,
             'name' => $data['name'],
             'email' => $data['email'],
+            'role' => $data['role'],
             'is_login' => true
         ];
 
         $this->session->set_userdata($sess_user);
-        
+
         return true;
     }
 
 }
-
-/* End of file ModelName.php */
