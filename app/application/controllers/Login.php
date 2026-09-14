@@ -19,8 +19,6 @@ class Login extends MY_Controller
     {
         if ($_POST) {
             $input = (object) $this->input->post(null, true);
-        } else {
-            $input = (object) $this->login->getDefaultValues();
         }
 
         if (! $this->login->validate()) {
@@ -30,13 +28,13 @@ class Login extends MY_Controller
             $this->view($data);
             return;
         }
-        
+
         if ($this->login->run($input)) {
             $this->session->set_flashdata('success', 'Login successfully');
             redirect(base_url());
             return;
         } else {
-            $this->session->set_flashdata('error', 'Email or Password is not valid');
+            $this->session->set_flashdata('error', 'Email or Password is not valid or Account is deactived');
             redirect(base_url('login'));
             return;
         }
