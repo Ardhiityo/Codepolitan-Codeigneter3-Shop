@@ -34,7 +34,7 @@
                     <a class="nav-link" href="login.html">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.html">Register</a>
+                    <a class="nav-link" href="/register">Register</a>
                 </li>
                 <li class="nav-item">
                     <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"

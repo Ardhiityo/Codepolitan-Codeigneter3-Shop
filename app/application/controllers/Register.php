@@ -17,16 +17,13 @@ class Register extends MY_Controller
 
     public function index()
     {
-        if (! $_POST) {
-            $input = (object) $this->register->getDefaultValues();
-        } else {
+        if ($_POST) {
             $input = (object) $this->input->post(null, true);
         }
 
         if (! $this->register->validate()) {
             $data['title'] = 'Register';
             $data['page'] = 'pages/auth/register';
-            $data['input'] = $input;
 
             $this->view($data);
             return;

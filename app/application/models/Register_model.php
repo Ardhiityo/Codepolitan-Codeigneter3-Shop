@@ -5,17 +5,6 @@ class Register_model extends MY_Model
 {
     protected $table = 'users';
 
-    public function getDefaultValues()
-    {
-        return [
-            'name' => '',
-            'email' => '',
-            'password' => '',
-            'role' => '',
-            'is_active' => ''
-        ];
-    }
-
     public function getValidationRules()
     {
         return [
@@ -35,7 +24,7 @@ class Register_model extends MY_Model
             [
                 'field' => 'password',
                 'label' => 'Password',
-                'rules' => 'required|min_length[5]|'
+                'rules' => 'required|min_length[5]'
             ],
             [
                 'field' => 'password_confirmation',
@@ -51,6 +40,7 @@ class Register_model extends MY_Model
             'name' => $input->name,
             'email' => strtolower($input->email),
             'password' => hashPassword($input->password),
+            'role' => 'member'
         ];
 
         $id = $this->create($data);
