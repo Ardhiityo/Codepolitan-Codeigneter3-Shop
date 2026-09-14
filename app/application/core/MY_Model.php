@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Model extends CI_Model
+abstract class MY_Model extends CI_Model
 {
     protected $table = '';
     protected $per_page = 5;
@@ -18,7 +18,9 @@ class MY_Model extends CI_Model
             ));
         }
     }
-
+    
+    abstract public function getValidationRules();
+    
     public function validate()
     {
         $this->load->library('form_validation');
