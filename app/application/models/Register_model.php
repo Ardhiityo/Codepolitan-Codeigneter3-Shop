@@ -63,6 +63,8 @@ class Register_model extends MY_Model
         ];
 
         $this->session->set_userdata($sess_user);
+        
+        return true;
     }
 
 }

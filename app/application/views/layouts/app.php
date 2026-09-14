@@ -16,7 +16,7 @@
     <!-- Navbar -->
 
     <!-- Content -->
-    <?php $this->load->view($pages) ?>
+    <?php $this->load->view($page) ?>
     <!-- Content -->
 
     <script src="/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
