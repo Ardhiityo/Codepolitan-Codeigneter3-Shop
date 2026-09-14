@@ -81,6 +81,17 @@ class Category extends MY_Controller
         redirect(base_url('category'));
     }
 
+    public function delete($id)
+    {
+        if ($this->category->where('id', $id)->delete()) {
+            $this->session->set_flashdata('success', 'Category success deleted');
+            redirect(base_url('category'));
+        } else {
+            $this->session->set_flashdata('warning', 'Category not found');
+        }
+        redirect(base_url('category'));
+    }
+
     public function unique_slug($slug)
     {
         $query = $this->category->where('slug', $slug);
@@ -88,14 +99,14 @@ class Category extends MY_Controller
         $id = $this->uri->segment(3);
 
         if ($id && $path === 'edit') {
-            if ($query->where('id !=', $id)->first()) {
-                $this->form_validation->set_message('unique_slug', 'The {field} already exists');
-                return false;
+            if ($id === $query->first()->id) {
+                return true;
             }
-            return true;
+            $this->form_validation->set_message('unique_slug', 'The {field} already exists');
+            return false;
         }
 
-        if ($query->where('slug', $slug)->first()) {
+        if ($query->first()) {
             $this->form_validation->set_message('unique_slug', 'The {field} already exists');
             return false;
         }

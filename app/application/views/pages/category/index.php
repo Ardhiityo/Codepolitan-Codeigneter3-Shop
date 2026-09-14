@@ -42,9 +42,10 @@
                                     <a href="<?= '/category/edit/'.$row->id ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                    <a href="<?= '/category/delete/'.$row->id ?>" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Are you sure?')">
                                         <i class="fa-solid fa-trash"></i>
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
