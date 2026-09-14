@@ -10,7 +10,7 @@
                     <label for="title" class="form-label">Kategori</label>
                     <?= form_input(
                         'title',
-                        set_value('title'),
+                        $input->title,
                         [
                             'id' => 'title',
                             'class' => 'form-control',
@@ -23,7 +23,7 @@
                     <label for="slug" class="form-label">Slug</label>
                     <?= form_input(
                         'slug',
-                        set_value('slug'),
+                        $input->slug,
                         [
                             'id' => 'slug',
                             'class' => 'form-control',

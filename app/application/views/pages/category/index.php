@@ -39,9 +39,9 @@
                                 <td><?= $row->title ?></td>
                                 <td><?= $row->slug ?></td>
                                 <td class="d-flex gap-3">
-                                    <button class="btn btn-sm btn-warning">
+                                    <a href="<?= '/category/edit/'.$row->id ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
+                                    </a>
                                     <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
