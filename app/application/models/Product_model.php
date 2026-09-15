@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Product_model extends MY_Model
 {
-    protected $table = 'products';
+    protected $table = 'product';
     public $per_page = 5;
 
     public function getDefaultValues()

@@ -63,7 +63,7 @@ abstract class MY_Model extends CI_Model
 
     public function join($table)
     {
-        $this->db->join($table, "$table.id = $this->table._id");
+        $this->db->join($table, "$table.id = $this->table.$table"."_id");
         return $this;
     }
 
@@ -124,15 +124,15 @@ abstract class MY_Model extends CI_Model
             'per_page' => $this->per_page,
             'uri_segment' => $uri_segment,
             'use_page_numbers' => true,
-            
+
             'first_link' => false,
             'last_link' => false,
-            
+
             'full_tag_open' => '<ul class="pagination">',
             'full_tag_close' => '</ul>',
 
             'attributes' => ['class' => 'page-link'],
-            
+
             'prev_link' => 'Previous',
             'prev_tag_open' => '<li class="page-item">',
             'prev_tag_close' => '</li>',

@@ -16,7 +16,7 @@
                     <div class="dropdown">
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/category">Kategori</a></li>
-                            <li><a class="dropdown-item" href="#">Produk</a></li>
+                            <li><a class="dropdown-item" href="/product">Produk</a></li>
                             <li><a class="dropdown-item" href="#">Order</a></li>
                             <li><a class="dropdown-item" href="admin-users.html">Pengguna</a></li>
                         </ul>

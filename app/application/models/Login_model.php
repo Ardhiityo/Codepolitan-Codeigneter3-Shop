@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login_model extends MY_Model
 {
-    protected $table = 'users';
+    protected $table = 'user';
 
     public function getDefaultValues()
     {
