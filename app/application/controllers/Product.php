@@ -10,6 +10,9 @@ class Product extends MY_Controller
 
     public function index($page = 1)
     {
+        $keyword = $this->input->get('keyword', true);
+
+        $data['keyword'] = $keyword;
         $data['title'] = 'Product';
         $data['page'] = 'pages/product/index';
         $data['total_rows'] = $this->product->count();
@@ -20,7 +23,14 @@ class Product extends MY_Controller
             'category.title AS category_title',
             'product.price',
             'product.is_available'
-        ])->join('category')->orderBy('id', 'desc')->paginate($page)->get();
+        ])
+            ->join('category')
+            ->like('product.title', $keyword)
+            ->orderBy('id', 'desc')
+            ->paginate($keyword ? 1 : $page)
+            ->get();
+
+        $data['action'] = base_url('product');
         $data['per_page'] = $this->product->per_page;
         $data['current_page'] = $page;
         $data['pagination'] = $this->product->makePagination(

@@ -10,15 +10,24 @@
                         </div>
                     </div>
                     <div class="col-4">
+                        <?= form_open($action, ['method' => 'GET']) ?>
                         <div class="input-group">
-                            <input type="text" class="form-control w-50" placeholder="Cari">
-                            <button class="btn btn-sm btn-primary">
+                            <?= form_input(
+                                [
+                                    'name' => 'keyword',
+                                    'placeholder' => 'Cari',
+                                    'class' => 'form-control w-50',
+                                    'value' => $keyword
+                                ])
+                                ?>
+                            <button type="submit" class="btn btn-sm btn-primary">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
-                            <button class="btn btn-sm btn-secondary">
+                            <a href="<?= base_url('product') ?>" class="btn btn-sm btn-secondary">
                                 <i class="fa-solid fa-eraser"></i>
-                            </button>
+                            </a>
                         </div>
+                        <?= form_close() ?>
                     </div>
                 </div>
             </div>
