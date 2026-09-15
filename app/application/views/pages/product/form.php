@@ -112,6 +112,11 @@
                         ])
                         ?>
                     <?= form_error('image_url') ?>
+                    <?php if ($input->image_url) : ?>
+                        <div class="div my-3">
+                            <img src="<?= base_url($input->image_url) ?>" height="70" width="70" alt="product" class="rounded">
+                        </div>
+                    <?php endif ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <?= form_close() ?>

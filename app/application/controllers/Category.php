@@ -98,24 +98,25 @@ class Category extends MY_Controller
         redirect(base_url('category'));
     }
 
-    public function unique_slug($slug)
+     public function unique_slug($slug)
     {
-        $query = $this->category->where('slug', $slug);
+        $category = $this->category->where('slug', $slug)->first();
         $path = $this->uri->segment(2);
         $id = $this->uri->segment(3);
 
-        if ($id && $path === 'edit') {
-            if ($id === $query->first()->id) {
+        if ($id && $path === 'edit' && $category) {
+            if ($id === $category->id) {
                 return true;
             }
             $this->form_validation->set_message('unique_slug', 'The {field} already exists');
             return false;
         }
 
-        if ($query->first()) {
+        if ($category) {
             $this->form_validation->set_message('unique_slug', 'The {field} already exists');
             return false;
         }
+        
         return true;
     }
 }

@@ -27,7 +27,7 @@ abstract class MY_Model extends CI_Model
         $this->load->library('form_validation');
 
         $this->form_validation->set_error_delimiters(
-            "<small class='form-text text-danger'>", "</small>"
+            "<small class='form-text text-danger text-sm'>", "</small>"
         );
 
         $validationRules = $this->getValidationRules();

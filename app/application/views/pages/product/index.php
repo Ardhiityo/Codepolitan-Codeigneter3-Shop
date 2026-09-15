@@ -39,7 +39,8 @@
                             <tr>
                                 <td><?= (($per_page * $current_page) - $per_page) + ($index + 1) ?></td>
                                 <td>
-                                    <img src="<?= base_url($row->image_url) ?>" alt="product" class="rounded" height="50" width="50">
+                                    <img src="<?= base_url($row->image_url) ?>" alt="product" class="rounded" height="50"
+                                        width="50">
                                     <?= $row->product_title ?>
                                 </td>
                                 <td>
@@ -48,9 +49,9 @@
                                 <td>Rp. <?= number_format($row->price, 0, ',', '.') ?>,-</td>
                                 <td><?= $row->is_available ? 'Tersedia' : 'Kosong' ?></td>
                                 <td class="d-flex gap-3">
-                                    <button class="btn btn-sm btn-warning">
+                                    <a href="<?= '/product/edit/'.$row->id ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
+                                    </a>
                                     <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
