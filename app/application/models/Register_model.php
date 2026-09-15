@@ -26,7 +26,7 @@ class Register_model extends MY_Model
             [
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'trim|required|valid_email|is_unique[users.email]',
+                'rules' => 'trim|required|valid_email|is_unique[user.email]',
                 'errors' => [
                     'is_unique' => 'This %s already exists.'
                 ]

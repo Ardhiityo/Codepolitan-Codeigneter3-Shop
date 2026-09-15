@@ -57,14 +57,14 @@ class Product extends MY_Controller
             $this->view($data);
             return;
         }
-
+        
         if (! $_FILES['image_url']['name']) {
             $this->session->set_flashdata('warning', 'Image field is required');
             redirect(base_url('product/create'));
             return;
         }
 
-        $file_upload = $this->product->fileUpload('image_url');
+        $file_upload = fileUpload('image_url', './uploads/products');
         if (! $file_upload) {
             redirect(base_url('product'));
             return;
@@ -104,7 +104,7 @@ class Product extends MY_Controller
         }
 
         if ($_FILES['image_url']['name']) {
-            $file_upload = $this->product->fileUpload('image_url');
+            $file_upload = fileUpload('image_url', './uploads/products');
             if (! $file_upload) {
                 redirect(base_url('product'));
                 return;

@@ -43,3 +43,22 @@ function hashVerify($password, $hash)
 {
     return password_verify($password, $hash);
 }
+
+function fileUpload($field, $upload_path)
+{
+    $config['upload_path'] = $upload_path;
+    $config['allowed_types'] = 'jpg|png|jpeg';
+    $config['max_size'] = 200;
+    $config['file_name'] = uniqid('product');
+
+    $CI =& get_instance();
+
+    $CI->load->library('upload', $config);
+
+    if (! $CI->upload->do_upload($field)) {
+        $CI->session->set_flashdata('error', $CI->upload->display_errors());
+        return false;
+    } else {
+        return $CI->upload->data();
+    }
+}
