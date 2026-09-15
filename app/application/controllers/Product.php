@@ -20,7 +20,7 @@ class Product extends MY_Controller
             'category.title AS category_title',
             'product.price',
             'product.is_available'
-        ])->join('category')->paginate($page)->get();
+        ])->join('category')->orderBy('id', 'desc')->paginate($page)->get();
         $data['per_page'] = $this->product->per_page;
         $data['current_page'] = $page;
         $data['pagination'] = $this->product->makePagination(
@@ -50,7 +50,7 @@ class Product extends MY_Controller
 
         if (! $_FILES['image_url']['name']) {
             $this->session->set_flashdata('warning', 'Image field is required');
-            redirect(base_url('product'));
+            redirect(base_url('product/create'));
             return;
         }
 
@@ -113,6 +113,34 @@ class Product extends MY_Controller
         return;
     }
 
+    public function delete($id)
+    {
+        if (! $_POST) {
+            $this->session->set_flashdata('warning', 'Operation is not allowed');
+            redirect(base_url('product'));
+            return;
+        }
+
+        $product = $this->product->where('id', $id)->first();
+
+        if (is_null($product)) {
+            $this->session->set_flashdata('error', 'Product not found');
+            redirect(base_url('product'));
+            return;
+        }
+
+        if (file_exists($product->image_url)) {
+            unlink($product->image_url);
+        }
+
+        if ($this->product->where('id', $id)->delete()) {
+            $this->session->set_flashdata('success', 'Product deleted successfully');
+        } else {
+            $this->session->set_flashdata('error', 'Something went wrong');
+        }
+        redirect(base_url('product'));
+    }
+
     public function unique_slug($slug)
     {
         $product = $this->product->where('slug', $slug)->first();
@@ -131,7 +159,7 @@ class Product extends MY_Controller
             $this->form_validation->set_message('unique_slug', 'The {field} already exists');
             return false;
         }
-        
+
         return true;
     }
 }

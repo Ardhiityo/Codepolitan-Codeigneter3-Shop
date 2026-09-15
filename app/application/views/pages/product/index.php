@@ -52,9 +52,13 @@
                                     <a href="<?= '/product/edit/'.$row->id ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                    <?= form_open('/product/delete/'.$row->id) ?>
+                                    <?= form_hidden('id', $row->id) ?>
+                                    <button class="btn btn-sm btn-danger" type="submit"
+                                        onclick="return confirm('Are you sure?')">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
+                                    <?= form_close() ?>
                                 </td>
                             </tr>
                         <?php endforeach ?>

@@ -85,7 +85,7 @@ class Category extends MY_Controller
     {
         if (! $_POST) {
             $this->session->set_flashdata('warning', 'Operation is not allowed');
-            redirect(base_url());
+            redirect(base_url('category'));
             return;
         }
 
