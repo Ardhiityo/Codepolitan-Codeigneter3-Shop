@@ -14,7 +14,7 @@ class Product_model extends MY_Model
             'title' => '',
             'desc' => '',
             'price' => '',
-            'is_available' => '',
+            'is_available' => true,
             'image_url' => '',
         ];
     }

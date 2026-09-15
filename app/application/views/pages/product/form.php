@@ -58,16 +58,9 @@
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Kategori</label>
-                    <?php
-                    $options = [
-                        '' => 'Pilih Kategori',
-                        'smartphones' => 'Smartphones',
-                        'laptops' => 'Laptops',
-                    ]
-                        ?>
                     <?= form_dropdown(
                         'category_id',
-                        $options,
+                        getDropdownList('category', ['id', 'title']),
                         $input->category_id,
                         ['class' => 'form-select']
                     ) ?>
@@ -78,12 +71,14 @@
                     <br>
                     <div class="d-flex gap-3">
                         <div class="form-check">
-                            <?= $input->is_available ?>
                             <?= form_radio(
-                                'is_available',
-                                1,
-                                true,
-                                ['class' => 'form-check-input', 'id' => 'available']
+                                [
+                                    'name' => 'is_available',
+                                    'class' => 'form-check-input',
+                                    'checked' => $input->is_available == 1 ? true : false,
+                                    'value' => '1',
+                                    'id' => 'available'
+                                ]
                             ) ?>
                             <label class=" form-check-label" for="available">
                                 Ada
@@ -91,10 +86,13 @@
                         </div>
                         <div class="form-check">
                             <?= form_radio(
-                                'is_available',
-                                0,
-                                false,
-                                ['class' => 'form-check-input', 'id' => 'unavailable']
+                                [
+                                    'name' => 'is_available',
+                                    'class' => 'form-check-input',
+                                    'checked' => $input->is_available == 0 ? true : false,
+                                    'value' => '0',
+                                    'id' => 'available'
+                                ]
                             ) ?>
                             <label class="form-check-label" for="unavailable">
                                 Kosong
