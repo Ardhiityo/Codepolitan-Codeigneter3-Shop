@@ -6,7 +6,7 @@
                     <div class="col-6">
                         <div class="d-flex gap-3 align-items-center">
                             <h6 class="m-0">Produk</h6>
-                            <button class="btn btn-sm btn-primary">Tambah</button>
+                            <a href="/product/create" class="btn btn-sm btn-primary">Tambah</a>
                         </div>
                     </div>
                     <div class="col-4">
@@ -39,7 +39,7 @@
                             <tr>
                                 <td><?= (($per_page * $current_page) - $per_page) + ($index + 1) ?></td>
                                 <td>
-                                    <img src="https://placehold.co/50x50" alt="avatar" class="rounded h-70">
+                                    <img src="<?= base_url($row->image_url) ?>" alt="product" class="rounded" height="50" width="50">
                                     <?= $row->product_title ?>
                                 </td>
                                 <td>

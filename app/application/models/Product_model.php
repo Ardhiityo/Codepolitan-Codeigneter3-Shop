@@ -15,6 +15,7 @@ class Product_model extends MY_Model
             'desc' => '',
             'price' => '',
             'is_available' => '',
+            'image_url' => '',
         ];
     }
 
@@ -50,7 +51,24 @@ class Product_model extends MY_Model
                 'field' => 'is_available',
                 'label' => 'Availability',
                 'rules' => 'trim|required'
-            ]
+            ],
         ];
+    }
+
+    public function fileUpload($field)
+    {
+        $config['upload_path'] = './uploads/products';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 200;
+        $config['file_name'] = uniqid('product');
+
+        $this->load->library('upload', $config);
+
+        if (! $this->upload->do_upload($field)) {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            return false;
+        } else {
+           return $this->upload->data();
+        }
     }
 }
