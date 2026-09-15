@@ -83,6 +83,12 @@ class Category extends MY_Controller
 
     public function delete($id)
     {
+        if (! $_POST) {
+            $this->session->set_flashdata('warning', 'Operation is not allowed');
+            redirect(base_url());
+            return;
+        }
+
         if ($this->category->where('id', $id)->delete()) {
             $this->session->set_flashdata('success', 'Category success deleted');
             redirect(base_url('category'));

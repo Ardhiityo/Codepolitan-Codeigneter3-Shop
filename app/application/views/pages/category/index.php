@@ -42,10 +42,13 @@
                                     <a href="<?= '/category/edit/'.$row->id ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <a href="<?= '/category/delete/'.$row->id ?>" class="btn btn-sm btn-danger"
+                                    <?= form_open('/category/delete/'. $row->id) ?>
+                                    <?= form_hidden('id', $row->id) ?>
+                                    <button class="btn btn-sm btn-danger" type="submit"
                                         onclick="return confirm('Are you sure?')">
                                         <i class="fa-solid fa-trash"></i>
-                                    </a>
+                                    </button>
+                                    <?= form_close() ?>
                                 </td>
                             </tr>
                         <?php endforeach ?>
