@@ -6,9 +6,17 @@
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <span>Kategori : <strong>Semua Kategori</strong></span>
                         <div>
-                            <span>Urutkan Harga:
-                                <span class="badge text-bg-primary">Termurah</span> |
-                                <span class="badge text-bg-primary">Termahal</span>
+                            <span class="d-flex gap-2">
+                                Urutkan Harga
+                                <?= form_open(base_url(), ['method' => 'GET']) ?>
+                                <?= form_hidden('price', 'asc') ?>
+                                <button class="badge text-bg-primary">Termurah</button>
+                                <?= form_close() ?>
+
+                                <?= form_open(base_url(), ['method' => 'GET']) ?>
+                                <?= form_hidden('price', 'desc') ?>
+                                <button class="badge text-bg-primary">Termahal</button>
+                                <?= form_close() ?>
                             </span>
                         </div>
                     </div>
@@ -21,7 +29,7 @@
                     <?php foreach ($content as $index => $row) : ?>
                         <div class="col-6 mb-3">
                             <div class="card">
-                                <img src="<?= base_url($row->image_url) ?>" height="400"  alt="product">
+                                <img src="<?= base_url($row->image_url) ?>" height="400" alt="product">
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <strong>
