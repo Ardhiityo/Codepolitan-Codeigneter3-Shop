@@ -75,10 +75,15 @@
                 <h6>Pencarian</h6>
             </div>
             <div class="card-body">
+                <?= form_open(base_url(), ['method' => 'GET']) ?>
                 <div class="input-group">
-                    <input type="text" class="form-control">
-                    <button class="btn btn-primary">Cari</button>
+                    <?= form_input([
+                        'class' => 'form-control',
+                        'name' => 'keyword'
+                    ]) ?>
+                    <button type="submit" class="btn btn-primary">Cari</button>
                 </div>
+                <?= form_close() ?>
             </div>
         </div>
         <div class="card mb-3">
