@@ -38,7 +38,7 @@
                         </button>
                         <div class="dropdown">
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="/profile">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Orders</a></li>
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
