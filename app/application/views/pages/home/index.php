@@ -45,17 +45,25 @@
                                         </strong>
                                     </p>
                                     <p>
-                                        <span class="badge text-bg-primary">
+                                        <a href="<?= base_url('?category='.$row->category_slug) ?>"
+                                            class="badge text-bg-primary">
                                             <i class="fa-solid fa-tag"></i>
                                             <?= $row->category_title ?>
-                                        </span>
+                                        </a>
                                     </p>
                                 </div>
                                 <div class="card-footer">
+                                    <?= form_open(base_url('cart/add'), ['method' => 'POST']) ?>
                                     <div class="input-group">
-                                        <input type="number" class="form-control">
-                                        <button class="btn btn-primary">Add to Cart</button>
+                                        <?= form_hidden('product_id', $row->id) ?>
+                                        <?= form_input([
+                                        'name' => 'quantity',
+                                            'class' => 'form-control',
+                                            'type' => 'number'
+                                        ]) ?>
+                                        <button type="submit" class="btn btn-primary">Add to Cart</button>
                                     </div>
+                                    <?= form_close() ?>
                                 </div>
                             </div>
                         </div>

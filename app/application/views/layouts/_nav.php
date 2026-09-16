@@ -25,9 +25,9 @@
             </ul>
             <ul class="navbar-nav mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="cart.html">
+                    <a class="nav-link" href="/cart">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        Cart (0)
+                        Cart (<?= getCart() ?>)
                     </a>
                 </li>
                 <?php if ($this->session->userdata('is_login')) : ?>

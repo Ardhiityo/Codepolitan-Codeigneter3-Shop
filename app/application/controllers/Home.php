@@ -13,6 +13,7 @@ class Home extends MY_Controller
 		$keyword = $this->input->get('keyword', true);
 		$category = $this->input->get('category', true);
 		$price = $this->input->get('price', true);
+		
 
 		$data['title'] = 'Home';
 		$data['page'] = 'pages/home/index';
@@ -22,6 +23,7 @@ class Home extends MY_Controller
 			'product.desc',
 			'product.title AS product_title',
 			'category.title AS category_title',
+			'category.slug AS category_slug',
 			'product.price',
 			'product.is_available'
 		])
