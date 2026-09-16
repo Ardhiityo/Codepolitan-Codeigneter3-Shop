@@ -10,14 +10,13 @@ class Logout extends MY_Controller
         $has_session = $this->session->userdata('is_login');
 
         if (! $has_session) {
-            redirect(base_url('/login'));
-            return;
+            redirect('login');
         }
     }
 
     public function index()
     {
         $this->session->sess_destroy();
-        redirect(base_url('/login'));
+        redirect('login');
     }
 }

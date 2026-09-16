@@ -9,6 +9,5 @@ class Home extends MY_Controller
 		$data['page'] = 'pages/home/index';
 
 		$this->view($data);
-		return;
 	}
 }

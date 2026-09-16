@@ -10,8 +10,7 @@ class Login extends MY_Controller
         $has_session = $this->session->userdata('is_login');
 
         if ($has_session) {
-            redirect(base_url());
-            return;
+            redirect('/');
         }
     }
 
@@ -31,12 +30,10 @@ class Login extends MY_Controller
 
         if ($this->login->run($input)) {
             $this->session->set_flashdata('success', 'Login successfully');
-            redirect(base_url());
-            return;
+            redirect('/');
         } else {
             $this->session->set_flashdata('error', 'Email or Password is not valid or Account is deactived');
-            redirect(base_url('login'));
-            return;
+            redirect('login');
         }
     }
 

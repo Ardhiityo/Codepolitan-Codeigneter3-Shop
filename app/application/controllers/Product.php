@@ -6,6 +6,10 @@ class Product extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $role = $this->session->userdata('role');
+        if ($role != 'admin') {
+            redirect('/');
+        }
     }
 
     public function index($page = 1)
@@ -57,17 +61,15 @@ class Product extends MY_Controller
             $this->view($data);
             return;
         }
-        
+
         if (! $_FILES['image_url']['name']) {
             $this->session->set_flashdata('warning', 'Image field is required');
-            redirect(base_url('product/create'));
-            return;
+            redirect('product/create');
         }
 
         $file_upload = fileUpload('image_url', './uploads/products');
         if (! $file_upload) {
-            redirect(base_url('product'));
-            return;
+            redirect('product');
         }
 
         $input->image_url = 'uploads/products/'.$file_upload['file_name'];
@@ -76,7 +78,7 @@ class Product extends MY_Controller
         } else {
             $this->session->set_flashdata('error', 'Something went wrong');
         }
-        redirect(base_url('product'));
+        redirect('product');
     }
 
     public function edit($id)
@@ -84,8 +86,7 @@ class Product extends MY_Controller
         $product = $this->product->where('id', $id)->first();
         if (is_null($product)) {
             $this->session->set_flashdata('warning', 'Product not found');
-            redirect(base_url('product'));
-            return;
+            redirect('product');
         }
 
         if ($_POST) {
@@ -106,8 +107,7 @@ class Product extends MY_Controller
         if ($_FILES['image_url']['name']) {
             $file_upload = fileUpload('image_url', './uploads/products');
             if (! $file_upload) {
-                redirect(base_url('product'));
-                return;
+                redirect('product');
             }
             if (file_exists($product->image_url)) {
                 unlink($product->image_url);
@@ -119,24 +119,21 @@ class Product extends MY_Controller
 
         $this->product->where('id', $product->id)->update($input);
         $this->session->set_flashdata('success', 'Product updated successfully');
-        redirect(base_url('product'));
-        return;
+        redirect('product');
     }
 
     public function delete($id)
     {
         if (! $_POST) {
             $this->session->set_flashdata('warning', 'Operation is not allowed');
-            redirect(base_url('product'));
-            return;
+            redirect('product');
         }
 
         $product = $this->product->where('id', $id)->first();
 
         if (is_null($product)) {
             $this->session->set_flashdata('error', 'Product not found');
-            redirect(base_url('product'));
-            return;
+            redirect('product');
         }
 
         if (file_exists($product->image_url)) {
@@ -148,7 +145,7 @@ class Product extends MY_Controller
         } else {
             $this->session->set_flashdata('error', 'Something went wrong');
         }
-        redirect(base_url('product'));
+        redirect('product');
     }
 
     public function unique_slug($slug)

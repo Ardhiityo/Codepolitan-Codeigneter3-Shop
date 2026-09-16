@@ -6,12 +6,9 @@ class Register extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-
         $has_session = $this->session->userdata('is_login');
-
         if ($has_session) {
-            redirect(base_url());
-            return;
+            redirect('/');
         }
     }
 
@@ -30,13 +27,10 @@ class Register extends MY_Controller
         }
 
         if ($this->register->run($input)) {
-            redirect(base_url());
-            return;
+            redirect('/');
         } else {
             $this->session->set_flashdata('error', 'Ups, something went wrong');
-            redirect(base_url('register'));
-            return;
+            redirect('register');
         }
     }
-
 }

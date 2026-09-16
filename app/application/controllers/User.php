@@ -6,6 +6,10 @@ class User extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $role = $this->session->userdata('role');
+        if ($role != 'admin') {
+            redirect('/');
+        }
     }
 
     public function index($page = 1)
@@ -56,14 +60,12 @@ class User extends MY_Controller
 
         if (! $_FILES['image_url']['name']) {
             $this->session->set_flashdata('warning', 'Image field is required');
-            redirect(base_url('user/create'));
-            return;
+            redirect('user/create');
         }
 
         $file_upload = fileUpload('image_url', './uploads/users');
         if (! $file_upload) {
-            redirect(base_url('user'));
-            return;
+            redirect('user');
         }
 
         $input->image_url = 'uploads/users/'.$file_upload['file_name'];
@@ -74,7 +76,7 @@ class User extends MY_Controller
             $this->session->set_flashdata('error', 'Something went wrong');
         }
 
-        redirect(base_url('user'));
+        redirect('user');
     }
 
     public function edit($id)
@@ -83,8 +85,7 @@ class User extends MY_Controller
 
         if (is_null($user)) {
             $this->session->set_flashdata('warning', 'User not found');
-            redirect(base_url('user'));
-            return;
+            redirect('user');
         }
 
         if ($_POST) {
@@ -105,8 +106,7 @@ class User extends MY_Controller
         if ($_FILES['image_url']['name']) {
             $file_upload = fileUpload('image_url', './uploads/users');
             if (! $file_upload) {
-                redirect(base_url('user'));
-                return;
+                redirect('user');
             }
             if (file_exists($user->image_url)) {
                 unlink($user->image_url);
@@ -124,23 +124,21 @@ class User extends MY_Controller
 
         $this->user->where('id', $id)->update($input);
         $this->session->set_flashdata('success', 'User updated successfully');
-        redirect(base_url('user'));
+        redirect('user');
     }
 
     public function delete($id)
     {
         if (! $_POST) {
             $this->session->set_flashdata('warning', 'Operation is not allowed');
-            redirect(base_url('user'));
-            return;
+            redirect('user');
         }
 
         $user = $this->user->where('id', $id)->first();
 
         if (is_null($user)) {
             $this->session->set_flashdata('error', 'User not found');
-            redirect(base_url('user'));
-            return;
+            redirect('user');
         }
 
         if (file_exists($user->image_url)) {
@@ -152,7 +150,7 @@ class User extends MY_Controller
         } else {
             $this->session->set_flashdata('error', 'Something went wrong');
         }
-        redirect(base_url('user'));
+        redirect('user');
     }
 
     public function unique_email($email)
