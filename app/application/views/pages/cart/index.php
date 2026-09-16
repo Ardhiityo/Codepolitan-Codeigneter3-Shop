@@ -16,35 +16,46 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <img src="https://placehold.co/50x50" alt="product" class="rounded">
-                                Product Title
-                            </td>
-                            <td>Rp. 100.000,-</td>
-                            <td>
-                                <div class="input-group">
-                                    <input type="number" class="form-control text-center">
-                                    <button class="btn btn-primary"><i class="fa-solid fa-check"></i></button>
-                                </div>
-                            </td>
-                            <td>Rp. 100.000,-</td>
-                            <td>
-                                <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
+                        <?php foreach ($content as $key => $row) : ?>
+                            <tr>
+                                <td>
+                                    <img src="<?= $row->image_url ?>" width="50" height="50" alt="product" class="rounded">
+                                    <?= $row->title ?>
+                                </td>
+                                <td>Rp. <?= number_format($row->price, 0, ',', '.') ?>,-</td>
+                                <td>
+                                    <?= form_open(base_url('cart/update'), ['method' => 'POST']) ?>
+                                    <div class="input-group">
+                                        <?= form_hidden('product_id', $row->product_id) ?>
+                                        <?= form_input([
+                                            'type' => 'number',
+                                            'name' => 'quantity',
+                                            'class' => 'form-control text-center',
+                                            'value' => $row->quantity
+                                        ]) ?>
+                                        <button type="submit" class="btn btn-primary"><i
+                                                class="fa-solid fa-check"></i></button>
+                                    </div>
+                                    <?= form_close() ?>
+                                </td>
+                                <td>Rp. <?= number_format($row->subtotal, 0, ',', '.') ?>,-</td>
+                                <td>
+                                    <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-end">
-                    <h6><strong>Total: Rp. 100.000,-</strong></h6>
+                    <h6><strong>Total: Rp. <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong></h6>
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
-                <button class="btn btn-warning">
+                <a href="/" class="btn btn-warning">
                     <i class="fa-solid fa-circle-left"></i>
                     Kembali Belanja
-                </button>
-                <a href="checkout.html" class="btn btn-success">
+                </a>
+                <a href="/" class="btn btn-success">
                     Pembayaran
                     <i class="fa-solid fa-circle-right"></i>
                 </a>
