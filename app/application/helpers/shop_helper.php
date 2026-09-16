@@ -19,7 +19,7 @@ function getDropdownList($table, $columns)
 function getCategories()
 {
     $CI =& get_instance();
-    return $CI->db->get('categories')->result();
+    return $CI->db->get('category')->result();
 }
 
 function getCart()

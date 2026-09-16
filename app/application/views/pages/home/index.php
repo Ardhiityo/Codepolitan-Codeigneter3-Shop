@@ -86,9 +86,12 @@
                 <h6>Kategori</h6>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Semua kategori</li>
-                <li class="list-group-item">Kategori 1</li>
-                <li class="list-group-item">Kategori 2</li>
+                <a class="list-group-item" href="<?= base_url() ?>">Semua kategori</a>
+                <?php foreach (getCategories() as $key => $row) : ?>
+                    <a class="list-group-item" href="<?= base_url('?category='.$row->slug) ?>">
+                        <?= $row->title ?>
+                    </a>
+                <?php endforeach ?>
             </ul>
         </div>
     </div>

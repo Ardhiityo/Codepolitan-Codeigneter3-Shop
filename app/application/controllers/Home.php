@@ -11,6 +11,7 @@ class Home extends MY_Controller
 	public function index($page = 1)
 	{
 		$keyword = $this->input->get('keyword', true);
+		$category = $this->input->get('category', true);
 		$price = $this->input->get('price', true);
 
 		$data['title'] = 'Home';
@@ -26,6 +27,7 @@ class Home extends MY_Controller
 		])
 			->join('category')
 			->like('product.title', $keyword)
+			->like('category.slug', $category)
 			->where('product.is_available', true)
 			->orderBy('product.price', $price)
 			->orderBy('id', 'desc')
