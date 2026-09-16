@@ -8,19 +8,14 @@ class Profile_model extends MY_Model
     public function getDefaultValues()
     {
         return [
-            'name' => '',
-            'email' => ''
+            'email' => '',
+            'password' => ''
         ];
     }
 
     public function getValidationRules()
     {
         return [
-            [
-                'field' => 'name',
-                'label' => 'Name',
-                'rules' => 'trim|required'
-            ],
             [
                 'field' => 'email',
                 'label' => 'Email',

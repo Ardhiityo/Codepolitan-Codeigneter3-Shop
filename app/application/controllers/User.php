@@ -111,7 +111,7 @@ class User extends MY_Controller
             if (file_exists($user->image_url)) {
                 unlink($user->image_url);
             }
-            $input['image_url'] = 'uploads/users/'.$file_upload['file_name'];
+            $input->image_url = 'uploads/users/'.$file_upload['file_name'];
         } else {
             $input->image_url = $user->image_url;
         }

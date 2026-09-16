@@ -12,7 +12,7 @@
             <div class="card-body">
                 <p>Nama : <?= $content->name ?></p>
                 <p>Email: <?= $content->email ?></p>
-                <button class="btn btn-primary">Edit</button>
+                <a href="/profile/edit" class="btn btn-primary">Edit</a>
             </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ function fileUpload($field, $upload_path)
     $config['upload_path'] = $upload_path;
     $config['allowed_types'] = 'jpg|png|jpeg';
     $config['max_size'] = 200;
-    $config['file_name'] = uniqid('product');
+    $config['file_name'] = uniqid();
 
     $CI =& get_instance();
 

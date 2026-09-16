@@ -112,7 +112,7 @@ class Product extends MY_Controller
             if (file_exists($product->image_url)) {
                 unlink($product->image_url);
             }
-            $input['image_url'] = 'uploads/products/'.$file_upload['file_name'];
+            $input->image_url = 'uploads/products/'.$file_upload['file_name'];
         } else {
             $input->image_url = $product->image_url;
         }
