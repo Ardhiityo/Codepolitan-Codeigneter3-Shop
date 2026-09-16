@@ -18,40 +18,44 @@
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-6 mb-3">
-                        <div class="card">
-                            <img src="https://placehold.co/100x70" alt="product">
-                            <div class="card-body">
-                                <h5 class="card-title"><strong>Product title</strong></h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Dicta quo excepturi neque</p>
-                                <p class="card-text"><strong>Rp.100,000-</strong></p>
-                                <p>
-                                    <span class="badge text-bg-primary">
-                                        <i class="fa-solid fa-tag"></i>
-                                        Category</span>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="input-group">
-                                    <input type="number" class="form-control">
-                                    <button class="btn btn-primary">Add to Cart</button>
+                    <?php foreach ($content as $index => $row) : ?>
+                        <div class="col-6 mb-3">
+                            <div class="card">
+                                <img src="<?= base_url($row->image_url) ?>" height="400"  alt="product">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <strong>
+                                            <?= $row->product_title ?>
+                                        </strong>
+                                    </h5>
+                                    <p class="card-text">
+                                        <?= $row->desc ?>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>
+                                            Rp.<?= number_format($row->price, 0, '.', '.') ?>-
+                                        </strong>
+                                    </p>
+                                    <p>
+                                        <span class="badge text-bg-primary">
+                                            <i class="fa-solid fa-tag"></i>
+                                            <?= $row->category_title ?>
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control">
+                                        <button class="btn btn-primary">Add to Cart</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        <?= $pagination ?>
                     </div>
                 </div>
             </div>
