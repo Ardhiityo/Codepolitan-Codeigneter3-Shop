@@ -23,9 +23,11 @@
                                         <?= $row->invoice ?>
                                     </a>
                                 </td>
-                                <td><?= $row->date ?></td>
+                                <td><?= date('d/m/Y', strtotime($row->date)) ?></td>
                                 <td>Rp. <?= number_format($row->total, 0, ',', '.') ?>,-</td>
-                                <td><span class=" badge text-bg-warning">Menunggu Pembayaran</span></td>
+                                <td>
+                                    <?php $this->load->view('layouts/_status', ['status' => $row->status]) ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
