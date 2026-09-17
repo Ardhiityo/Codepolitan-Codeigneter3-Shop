@@ -8,19 +8,11 @@ class Cart_model extends MY_Model
 
     public function getDefaultValues()
     {
-        return [
-            // 
-        ];
+        // 
     }
 
     public function getValidationRules()
     {
-        return [
-            [
-                'field' => 'quantity',
-                'label' => 'Quantity',
-                'rules' => 'trim|required'
-            ]
-        ];
+        //    
     }
 }

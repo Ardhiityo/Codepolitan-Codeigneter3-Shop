@@ -7,26 +7,37 @@
                         <h6>Alamat Pengiriman</h5>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="name">
-                                <div id="name" class="form-text">We'll never share your email with anyone
-                                    else.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" id="phone" aria-describedby="phone">
-                                <div id="phone" class="form-text">We'll never share your email with anyone
-                                    else.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <textarea name="address" id="address" class="form-control" rows="10"
-                                    cols="5"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
+                        <?= form_open() ?>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <?= form_input([
+                                'id' => 'name',
+                                'name' => 'name',
+                                'class' => 'form-control'
+                            ]) ?>
+                            <?= form_error('name') ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <?= form_input([
+                                'id' => 'phone',
+                                'name' => 'phone',
+                                'type' => 'number',
+                                'class' => 'form-control'
+                            ]) ?>
+                            <?= form_error('phone') ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <?= form_textarea([
+                                'id' => 'address',
+                                'name' => 'address',
+                                'class' => 'form-control'
+                            ]) ?>
+                            <?= form_error('address') ?>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <?= form_close() ?>
                     </div>
                 </div>
             </div>
@@ -48,25 +59,31 @@
                     </thead>
                     <tbody>
                         <?php foreach ($content as $row) : ?>
-                            <td><?= $row->title ?></td>
-                            <td><?= $row->quantity ?></td>
-                            <td>Rp. <?= number_format($row->price, 0, ',', '.') ?>,-</td>
+                            <tr>
+                                <td><?= $row->title ?></td>
+                                <td><?= $row->quantity ?></td>
+                                <td>Rp. <?= number_format($row->price, 0, ',', '.') ?>,-</td>
+                            </tr>
                         <?php endforeach ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">Subtotal</td>
-                            <td>
-                                Rp. <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
-                            </td>
-                        </tr>
-                        <tr>
-                            <th colspan="2">Total</th>
-                            <th>
-                                Rp. <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
-                            </th>
-                        </tr>
-                    </tfoot>
+                        </tbody>
+                        <tfo ot>
+                            <tr>
+                                <td colspan="2">Subtotal</td>
+                                <td>
+
+                                    Rp.
+                                    <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2">Total</th>
+                                <th>
+
+                                    Rp.
+                                    <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
+                                </th>
+                            </tr>
+                            </tfoot>
                 </table>
             </div>
         </div>
