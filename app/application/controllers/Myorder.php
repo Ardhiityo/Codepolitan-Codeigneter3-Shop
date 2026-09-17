@@ -61,6 +61,11 @@ class Myorder extends MY_Controller
             ->orderBy('price', 'asc')
             ->join('product')
             ->get();
+            
+        if($order->status != 'waiting') {
+            $this->myorder->table = 'order_confirm';
+            $data['order_confirm'] = $this->myorder->where('order_id', $order->id)->first();
+        }
 
         return $this->view($data);
     }
