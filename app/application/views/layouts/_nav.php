@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        Cart (<?= getCart() ?>)
+                        Cart (<?= getCart() ? getCart() : 0?>)
                     </a>
                 </li>
                 <?php if ($this->session->userdata('is_login')) : ?>
