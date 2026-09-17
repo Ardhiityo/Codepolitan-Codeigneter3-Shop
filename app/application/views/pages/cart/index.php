@@ -63,7 +63,7 @@
                     <i class="fa-solid fa-circle-left"></i>
                     Kembali Belanja
                 </a>
-                <a href="/" class="btn btn-success">
+                <a href="/checkout" class="btn btn-success">
                     Pembayaran
                     <i class="fa-solid fa-circle-right"></i>
                 </a>
