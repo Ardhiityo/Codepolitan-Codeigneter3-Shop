@@ -8,7 +8,7 @@
                 <a href="/profile" class="nav-link text-primary">Profile</a>
             </li>
             <li class="list-group-item">
-                <a href="/order" class="nav-link text-primary">Orders</a>
+                <a href="/myorder" class="nav-link text-primary">Orders</a>
             </li>
         </ul>
     </div>

@@ -56,3 +56,4 @@ $route['category/(:num)'] = 'category/index/$1';
 $route['product/(:num)'] = 'product/index/$1';
 $route['product/(:num)'] = 'user/index/$1';
 $route['(:num)'] = 'home/index/$1';
+$route['myorder/(:num)'] = 'myorder/index/$1';
