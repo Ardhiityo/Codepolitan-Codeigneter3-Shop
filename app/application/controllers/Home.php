@@ -13,9 +13,9 @@ class Home extends MY_Controller
 		$keyword = $this->input->get('keyword', true);
 		$category = $this->input->get('category', true);
 		$price = $this->input->get('price', true);
-		
 
 		$data['title'] = 'Home';
+		$data['category'] = ucfirst($category);
 		$data['page'] = 'pages/home/index';
 		$data['content'] = $this->home->select([
 			'product.id',

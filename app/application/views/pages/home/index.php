@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
-                        <span>Kategori : <strong>Semua Kategori</strong></span>
+                        <span>Kategori : <strong><?= $category ? $category : 'Semua Kategori' ?></strong></span>
                         <div>
                             <span class="d-flex gap-2">
                                 Urutkan Harga
@@ -57,7 +57,7 @@
                                     <div class="input-group">
                                         <?= form_hidden('product_id', $row->id) ?>
                                         <?= form_input([
-                                        'name' => 'quantity',
+                                            'name' => 'quantity',
                                             'class' => 'form-control',
                                             'type' => 'number'
                                         ]) ?>
