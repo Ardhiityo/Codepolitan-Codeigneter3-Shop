@@ -56,7 +56,7 @@ class Checkout extends MY_Controller
             ->get();
 
         $this->db->trans_start();
-        
+
         $this->checkout->table = 'order';
         $order_id = $this->checkout->create([
             'user_id' => $this->user_id,
@@ -86,10 +86,20 @@ class Checkout extends MY_Controller
 
         $this->checkout->table = 'cart';
         $this->checkout->where('user_id', $this->user_id)->delete();
-        
+
         $this->db->trans_complete();
 
         $this->session->set_flashdata('success', 'Checkout created successfully');
         redirect('/checkout/success');
+    }
+
+    public function success()
+    {
+        $data['title'] = 'Checkout Success';
+        $data['page'] = 'pages/checkout/success';
+        $this->checkout->table = 'order';
+        $data['content'] = $this->checkout->where('user_id', $this->user_id)->orderBy('id', 'desc')->first();
+
+        $this->view($data);
     }
 }
