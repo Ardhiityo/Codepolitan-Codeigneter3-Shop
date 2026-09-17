@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-success">Konfirmasi Pembayaran</button>
+                <a href="/myorder/confirm" class="btn btn-success">Konfirmasi Pembayaran</a>
             </div>
         </div>
     </div>
