@@ -19,7 +19,7 @@
                         <?php foreach ($content as $key => $row) : ?>
                             <tr>
                                 <td>
-                                    <a href="<?= base_url('myorder/'.$row->invoice) ?>">
+                                    <a href="<?= base_url('myorder/detail/'.$row->invoice) ?>">
                                         <?= $row->invoice ?>
                                     </a>
                                 </td>
