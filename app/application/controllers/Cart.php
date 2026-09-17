@@ -93,7 +93,7 @@ class Cart extends MY_Controller
             redirect('cart');
         }
 
-        $request = (object) $this->input->post(null, 2);
+        $request = (object) $this->input->post(null, true);
 
         if ($request->quantity < 1) {
             $this->session->set_flashdata('warning', 'Quantity must be greater than equal 1');
@@ -117,6 +117,34 @@ class Cart extends MY_Controller
         ]);
 
         $this->session->set_flashdata('success', 'Cart updated successfully');
+        redirect('cart');
+    }
+
+    public function delete()
+    {
+        if (! $_POST) {
+            $this->session->set_flashdata('warning', 'Operation is not allowed');
+            redirect('cart');
+        }
+
+        $request = (object) $this->input->post(null, true);
+
+        $this->cart->table = 'product';
+        $product = $this->cart->where('id', $request->product_id)->first();
+
+        $this->cart->table = 'cart';
+        $product_cart = $this->cart->where('product_id', $request->product_id)->where('user_id', $this->user_id)->first();
+
+        if (is_null($product) || is_null($product_cart)) {
+            $this->session->set_flashdata('warning', 'Product not found');
+            redirect('cart');
+        }
+
+        if ($this->cart->where('product_id', $product_cart->product_id)->where('user_id', $this->user_id)->delete()) {
+            $this->session->set_flashdata('success', 'Product cart deleted successfully');
+        } else {
+            $this->session->set_flashdata('error', 'Something went wrong');
+        }
         redirect('cart');
     }
 }

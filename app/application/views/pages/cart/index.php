@@ -40,14 +40,22 @@
                                 </td>
                                 <td>Rp. <?= number_format($row->subtotal, 0, ',', '.') ?>,-</td>
                                 <td>
-                                    <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    <?= form_open(base_url('cart/delete'), ['method' => 'POST']) ?>
+                                    <?= form_hidden('product_id', $row->product_id) ?>
+                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                        class="btn btn-danger">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                    <?= form_close() ?>
                                 </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-end">
-                    <h6><strong>Total: Rp. <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong></h6>
+                    <h6><strong>Total: Rp.
+                            <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-</strong>
+                    </h6>
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between">
