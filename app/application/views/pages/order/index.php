@@ -11,7 +11,7 @@
                     <div class="col-4">
                         <?= form_open(base_url('order'), ['method' => 'GET']) ?>
                         <div class="input-group">
-                            <input type="text" class="form-control w-50" name="keyword" placeholder="Cari">
+                            <input type="text" class="form-control w-50" name="keyword" value="<?= $keyword ?>" placeholder="Cari">
                             <button type="submit" class="btn btn-sm btn-primary">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>

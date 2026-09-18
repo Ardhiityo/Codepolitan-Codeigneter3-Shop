@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Order_model extends MY_Model
 {
-    protected $table = 'order';
+    public $table = 'order';
     public $per_page = 5;
-    
+
     public function getDefaultValues()
     {
         // 
@@ -13,8 +13,12 @@ class Order_model extends MY_Model
 
     public function getValidationRules()
     {
-        // 
+        return [
+            [
+                'field' => 'status',
+                'label' => 'Status',
+                'rules' => 'trim|required'
+            ]
+        ];
     }
 }
-
-/* End of file ModelName.php */

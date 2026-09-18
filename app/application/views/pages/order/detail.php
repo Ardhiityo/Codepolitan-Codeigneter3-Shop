@@ -1,6 +1,5 @@
 <div class="row">
-    <?php $this->load->view('layouts/_menu') ?>
-    <div class="col-9">
+    <div class="col-9 mx-auto">
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h6 class="m-0">Detail Order <?= $order->invoice ?></h6>
@@ -38,13 +37,30 @@
                     <h6><strong>Total: Rp. <?= number_format($order->total, 0, ',', '.') ?>,-</strong></h6>
                 </div>
             </div>
-            <?php if ($order->status == 'waiting') : ?>
-                <div class="card-footer">
-                    <a href="/myorder/confirm" class="btn btn-success">Konfirmasi Pembayaran</a>
+            <div class="card-footer">
+                <?= form_open() ?>
+                <div class="input-group">
+                    <select class="form-select" name="status" aria-label="Default select example">
+                        <option <?= $order->status === 'waiting' ? 'selected' : '' ?> value="waiting">
+                            Menunggu Pembayaran
+                        </option>
+                        <option <?= $order->status === 'paid' ? 'selected' : '' ?> value="paid">
+                            Dibayar
+                        </option>
+                        <option <?= $order->status === 'delivery' ? 'selected' : '' ?> value="delivery" value="delivery">
+                            Dikirim
+                        </option>
+                        <option <?= $order->status === 'delivery' ? 'selected' : '' ?> value="cancel" value="cancel">
+                            Cancel
+                        </option>
+                    </select>
+                    <?= form_error('status') ?>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
-            <?php endif ?>
+                <?= form_close() ?>
+            </div>
         </div>
-        <?php if ($order->status != 'waiting') : ?>
+        <?php if (isset($order_confirm)) : ?>
             <div class="row mt-3">
                 <div class="col-6">
                     <div class="card">
@@ -54,7 +70,7 @@
                         <div class="card-body">
                             <p>Dari Rekening: <?= $order_confirm->account_number ?></p>
                             <p>Atas Nama: <?= $order_confirm->account_name ?></p>
-                            <p>Nominal: Rp. <?= number_format($order_confirm->nominal, 0, ',', '.') ?>,-</p>
+                            <p>Nominal: Rp. <?= $order_confirm->nominal ?>,-</p>
                             <p>Catatan: <?= $order_confirm->note ?></p>
                         </div>
                     </div>
@@ -62,7 +78,8 @@
                 <div class="col-3">
                     <div class="card">
                         <div class="card-body text-center">
-                            <img src="<?= base_url($order_confirm->image_url) ?>" height="200" width="200" alt="proof">
+                            <img src="<?= base_url($order_confirm->image_url) ?>" height="200" width="200" class="rounded"
+                                alt="proof">
                         </div>
                     </div>
                 </div>
