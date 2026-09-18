@@ -17,7 +17,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/category">Kategori</a></li>
                             <li><a class="dropdown-item" href="/product">Produk</a></li>
-                            <li><a class="dropdown-item" href="#">Order</a></li>
+                            <li><a class="dropdown-item" href="/order">Order</a></li>
                             <li><a class="dropdown-item" href="/user">Pengguna</a></li>
                         </ul>
                     </div>
@@ -27,7 +27,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/cart">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        Cart (<?= getCart() ? getCart() : 0?>)
+                        Cart (<?= getCart() ? getCart() : 0 ?>)
                     </a>
                 </li>
                 <?php if ($this->session->userdata('is_login')) : ?>
@@ -39,7 +39,9 @@
                         <div class="dropdown">
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="/myorder">Orders</a></li>
+                                <?php if ($this->session->userdata('role') == 'member') : ?>
+                                    <li><a class="dropdown-item" href="/myorder">Orders</a></li>
+                                <?php endif ?>
                                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
                             </ul>
                         </div>

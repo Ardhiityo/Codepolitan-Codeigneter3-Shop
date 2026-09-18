@@ -14,9 +14,11 @@ class Category extends MY_Controller
 
     public function index($page = 1)
     {
+        $keyword = $this->input->get('keyword', true);
+
         $data['title'] = 'Category';
         $data['page'] = 'pages/category/index';
-        $data['content'] = $this->category->paginate($page)->get();
+        $data['content'] = $this->category->like('title', $keyword)->paginate($keyword ? 1 : $page)->get();
         $data['per_page'] = $this->category->per_page;
         $data['current_page'] = $page;
         $data['total_rows'] = $this->category->count();

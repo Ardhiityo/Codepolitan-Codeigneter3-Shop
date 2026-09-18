@@ -10,15 +10,17 @@
                         </div>
                     </div>
                     <div class="col-4">
+                        <?= form_open(base_url('category'), ['method' => 'GET']) ?>
                         <div class="input-group">
-                            <input type="text" class="form-control w-50" placeholder="Cari">
+                            <input type="text" class="form-control w-50" name="keyword" placeholder="Cari">
                             <button class="btn btn-sm btn-primary">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
-                            <button class="btn btn-sm btn-secondary">
+                            <a href="/category" class="btn btn-sm btn-secondary">
                                 <i class="fa-solid fa-eraser"></i>
-                            </button>
+                            </a>
                         </div>
+                        <?= form_close() ?>
                     </div>
                 </div>
             </div>
@@ -42,7 +44,7 @@
                                     <a href="<?= '/category/edit/'.$row->id ?>" class="btn btn-sm btn-warning">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a>
-                                    <?= form_open('/category/delete/'. $row->id) ?>
+                                    <?= form_open('/category/delete/'.$row->id) ?>
                                     <?= form_hidden('id', $row->id) ?>
                                     <button class="btn btn-sm btn-danger" type="submit"
                                         onclick="return confirm('Are you sure?')">
