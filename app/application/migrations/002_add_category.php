@@ -17,8 +17,8 @@ class Migration_Add_category extends CI_Migration
                 'auto_increment' => TRUE
             ),
             'title' => array(
-                'type' => 'BIGINT',
-                'unsigned' => TRUE,
+                'type' => 'VARCHAR',
+                'constraint' => '255',
             ),
             'slug' => array(
                 'type' => 'VARCHAR',
