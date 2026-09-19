@@ -65,25 +65,25 @@
                                 <td>Rp. <?= number_format($row->price, 0, ',', '.') ?>,-</td>
                             </tr>
                         <?php endforeach ?>
-                        </tbody>
-                        <tfo ot>
-                            <tr>
-                                <td colspan="2">Subtotal</td>
-                                <td>
+                    </tbody>
+                    <tfo ot>
+                        <tr>
+                            <td colspan="2">Subtotal</td>
+                            <td>
 
-                                    Rp.
-                                    <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
-                                </td>
-                            </tr>
-                            <tr>
-                                <th colspan="2">Total</th>
-                                <th>
+                                Rp.
+                                <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Total</th>
+                            <th>
 
-                                    Rp.
-                                    <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
-                                </th>
-                            </tr>
-                            </tfoot>
+                                Rp.
+                                <?= number_format(array_sum(array_column($content, 'subtotal')), 0, ',', '.') ?>,-
+                            </th>
+                        </tr>
+                        </tfoot>
                 </table>
             </div>
         </div>

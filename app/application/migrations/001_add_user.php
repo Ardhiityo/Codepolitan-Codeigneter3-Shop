@@ -30,6 +30,7 @@ class Migration_Add_user extends CI_Migration
             ),
             'is_active' => array(
                 'type' => 'BOOLEAN',
+                'default' => TRUE
             ),
             'role' => array(
                 'type' => 'ENUM',

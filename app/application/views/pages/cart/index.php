@@ -42,8 +42,7 @@
                                 <td>
                                     <?= form_open(base_url('cart/delete'), ['method' => 'POST']) ?>
                                     <?= form_hidden('product_id', $row->product_id) ?>
-                                    <button type="submit" onclick="return confirm('Are you sure?')"
-                                        class="btn btn-danger">
+                                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                     <?= form_close() ?>
