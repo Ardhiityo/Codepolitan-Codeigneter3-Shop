@@ -64,7 +64,7 @@ class Checkout extends MY_Controller
             'address' => $input->address,
             'phone' => $input->phone,
             'status' => 'waiting',
-            'date' => date("Y-m-d H:i:s"),
+            'date' => date("Y-m-d"),
             'total' => array_sum(array_column($cart, 'subtotal')),
             'name' => $input->name
         ]);

@@ -3,11 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Migration_Add_user extends CI_Migration
 {
-    public function __construct()
-    {
-        //  
-    }
-
     public function up()
     {
         $this->dbforge->add_field(array(
@@ -52,5 +47,4 @@ class Migration_Add_user extends CI_Migration
     {
         $this->dbforge->drop_table('user_tb');
     }
-
 }

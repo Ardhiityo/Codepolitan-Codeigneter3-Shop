@@ -3,11 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Migration_Add_order_confirm extends CI_Migration
 {
-    public function __construct()
-    {
-        // 
-    }
-
     public function up()
     {
         $this->dbforge->add_field(array(

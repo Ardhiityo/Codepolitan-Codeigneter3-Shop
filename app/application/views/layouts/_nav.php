@@ -24,12 +24,14 @@
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Cart (<?= getCart() ? getCart() : 0 ?>)
-                    </a>
-                </li>
+                <?php if ($this->session->userdata('role') === 'member') : ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            Cart (<?= getCart() ? getCart() : 0 ?>)
+                        </a>
+                    </li>
+                <?php endif ?>
                 <?php if ($this->session->userdata('is_login')) : ?>
                     <li class="nav-item">
                         <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown"

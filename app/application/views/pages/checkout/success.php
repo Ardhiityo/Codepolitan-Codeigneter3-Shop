@@ -17,7 +17,7 @@
                 </ol>
                 <p>
                     Jika sudah, silahkan kirimkan bukti transfer di halaman konfirmasi atau bisa
-                    <a href="#">klik disini</a>
+                    <a href="/myorder/confirm">klik disini</a>
                 </p>
                 <a href="/" class="btn btn-primary">
                     <i class="fa-solid fa-circle-left"></i>

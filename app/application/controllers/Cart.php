@@ -13,6 +13,10 @@ class Cart extends MY_Controller
         if (! $is_login || ! $user_id) {
             redirect('login');
         }
+        $role = $this->session->userdata('role');
+        if ($role === 'admin') {
+            redirect('/');
+        }
         $this->user_id = $user_id;
     }
 

@@ -3,11 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Migration_Add_order extends CI_Migration
 {
-    public function __construct()
-    {
-        // 
-    }
-
     public function up()
     {
         $this->dbforge->add_field(array(
@@ -24,9 +19,19 @@ class Migration_Add_order extends CI_Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ),
+            '`date`' => array(
+                'type' => 'DATE',
+                'null' => FALSE,
+            ),
             'address' => array(
+                'type' => 'TEXT',
+            ),
+            'name' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '255',
+            ),
+            'total' => array(
+                'type' => 'INT',
             ),
             'phone' => array(
                 'type' => 'VARCHAR',
